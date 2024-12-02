@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Aesthetic Layout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@300;400;700&family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lora:wght@300;400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+    /* BASE STYLING */
+    html, body {
+      background: #f7f7f7;
+      color: #1a1a1a;
+      background-image: url("https://i.imgur.com/aB8iNzt.png");
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e6e6e6; 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1a1a1a; 
+    }
+
+    h1, h2, p {
+      margin-bottom: 5px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-family: 'Lora', serif;
+      font-weight: 300;
+      font-size: 14px;
+	  
+    }
+
+    a, a:link, a:active, a:visited {
+      text-decoration: none;
+      font-weight: bold;
+	  color: #4a2a8c;
+    }
+
+    a:hover {
+      background-color: #f7e6ff;
+      color: #1a1a1a;
+    }
+
+    /* CONTAINER */
+    #container {
+      position: fixed;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 700px; 
+      height: 450px; 
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.1),
+                  5px 5px 10px rgba(244, 194, 255, 0.4); /* Soft pastel shadow */
+      transition: all 0.5s ease-in-out;
+      border-top: 1.5px solid #D9DAD9;
+      border-left: 1.5px solid #D9DAD9;
+    }
+
+    /* IMAGE BOX WITH OUTLINE */
+    #visuals {
+      position: absolute;
+      margin: auto;
+      top: 30px;
+      left: 30px;
+      width: 340px; /* Larger image width */
+      height: 340px; /* Larger image height */
+      background: center / cover no-repeat;
+      background-color: #e0e0e0;
+      background-image: url("https://i.pinimg.com/736x/a0/85/38/a085389822e3fe1c12693d1bcd482e04.jpg");
+      border-top: 1.5px solid #D9DAD9;
+      border-left: 1.5px solid #D9DAD9;
+      border-radius: 12px;
+      box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.05), 
+                  10px 10px 15px rgba(244, 194, 255, 0.6); /* Pastel purple shadow */
+      transition: all 0.3s ease;
+    }
+
+    /* TABS */
+    #tab-menu {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+    }
+
+    .tab-item {
+      margin-left: 10px;
+    }
+
+    .tab-item [type=radio] {
+      display: none;
+    }
+
+    .tab-label {
+      display: block;
+      border: 1px solid #1a1a1a;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #e6e6e6;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .tab-item [type=radio]:checked ~ .tab-label {
+      background: #1a1a1a;
+    }
+
+ 
+    .tab-content {
+      position: absolute;
+      right: 10px;
+      bottom: 40px;
+      width: 250px;
+      height: 300px;
+      overflow: auto;
+      border-top: 1px solid #1a1a1a;
+      border-radius: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      background: #ffffff;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .tab-item [type=radio]:checked ~ .tab-content {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+
+	
+    .info-line b {
+      font-weight: 500; /* Lighter weight for a cleaner look */
+      color: #3a3a3a; /* Dark gray for the labels */
+      text-transform: uppercase; /* For a more refined appearance */
+    }
+
+    .info-line i {
+      font-style: italic;
+      color: #555; /* Soft gray for the values, softer on the eyes */
+      font-weight: 300; /* Lighter weight for the values */
+	  }
+.highlighted {
+      font-style: italic;
+      color: #4a2a8c; /* Rich purple for the highlighted text */
+      background-color: #f7e6ff; /* Soft pastel background */
+      border-radius: 4px;
+      padding: 0 5px;
+      font-weight: 600; /* Bolder weight to make it pop */
+      border-left: 1px solid #4a2a8c; /* Adding a left border like a "marker" effect */
+	   border-right: 1px solid #4a2a8c; /* Adding a left border like a "marker" effect */
+      box-shadow: 0 0 8px rgba(74, 42, 140, 0.2); /* Subtle shadow for depth */
+    }
+	
+  </style>
+</head>
+
+<body>
+
+<div id="container">
+  <div id="visuals"></div>
+  <div id="tab-menu">
+    <div class="tab-item">
+      <input id="tab1" type="radio" name="tab-group" checked="checked">
+      <label class="tab-label" for="tab1"></label>
+      <div class="tab-content">
+	  
+	  <b>full name</b> <i>Alexandre Delacroix</I>
+<br><b>nicknames</b> <i>to be given</I>
+<br><b>sex</b> <i>male</I>
+<br><b>race</b> <i> <span class="highlighted" title="Possessing meta-human regeneration, his body heals severe injuries within days, scars fading in weeks, keeping his face unscarred despite plenty beatings. This excludes dismemberments and fatal wounds. (unless agreed upon)">human</span></I>
+<br><b>height</b> <i>1.92m</I>
+<br><b>age</b> <i>23</I>
+<br><b>ethnicity</b> <i>Georgian & French </I>
+<br><b>eyes</b> <i>green</I>
+<br><b>orientation</b> <i>closet’s off-limits.</I>
+<br><b>occupation</b> <i>searching</I>
+<br><b>marital</b> <i>single</I>
+<br><b>demeanor</b> <i>kind, caring, loyal. <br> innocent but not certainly not <span class="highlighted" title="harmless"><a target="_blank" href="https://imgchest.com/p/xny8qqqz5yb"> harmless</a></span></i><br>
+
+
+</i><br></I>
+      
+      </div>
+    </div>
+    <div class="tab-item">
+      <input id="tab2" type="radio" name="tab-group">
+      <label class="tab-label" for="tab2"></label>
+      <div class="tab-content">
+	  
+	  <p>A former Olympic judoka, his metahuman trait allowed him to train beyond human limits, outcompeting most through sheer volume, countless throws and relentless falls.
+	  No stranger to throwing hands either, he's competed in underground circles with less formal rules. Born to immigrant parents, 
+	  he sought only to do right, yet his tenderness, forgiving nature, and sweet blood often attract the worst from the world. And so, his rosary remains close to his heart...</p>
+        <p>Will add more soon.</p>
+		
+		  <h1> </h1>
+        <h2> </h2>
+        <p>   <strong></strong>, <em></em>,  <a></a>,</p>
+      </div>
+    </div>
+    <div class="tab-item">
+      <input id="tab3" type="radio" name="tab-group">
+      <label class="tab-label" for="tab3"></label>
+      <div class="tab-content">
+        <h1>ooc</h1>
+        <p>Art is not mine.<br> Profile is work in progress. <br> DM Friendly. <br> EU writer. <br> Long-term preferred. <br> Open to most themes. <br> Can be selective. <br> Shitpost, novella.. It's all good.<br> Questions? Please ask! </p>
+		
+		
+      </div>
+    </div>
+	 <div class="tab-item">
+      <input id="tab4" type="radio" name="tab-group">
+      <label class="tab-label" for="tab4"></label>
+    
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
+
+
